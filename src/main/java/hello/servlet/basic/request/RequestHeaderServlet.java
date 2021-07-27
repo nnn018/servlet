@@ -32,12 +32,18 @@ public class RequestHeaderServlet extends HttpServlet {
 
     private void printHeaders(HttpServletRequest request){
         System.out.println("--- headers - start ---");
-        Enumeration<String> headerNames = request.getHeaderNames();
-        while(headerNames.hasMoreElements()){
-            String headerName = headerNames.nextElement();
-            System.out.println( headerName + " : " + headerName);
-        }
+
+//        Enumeration<String> headerNames = request.getHeaderNames();
+//        while(headerNames.hasMoreElements()){
+//            String headerName = headerNames.nextElement();
+//            System.out.println( headerName + " : " + headerName);
+//        }
+
+        request.getHeaderNames().asIterator()
+                .forEachRemaining(headerName -> System.out.println("headerName = " + headerName));
+
         System.out.println("--- headers - end ---");
         System.out.println();
+
     }
 }
